@@ -11,7 +11,7 @@
                 "${workspaceFolder}/*.cpp",
                 "-lhidapi-hidraw",
                 "-o",
-                "${workspaceFolder}/keyboardCpp",
+                "${workspaceFolder}/keyboardCppDebug",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
