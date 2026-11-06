@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "iostream": "cpp",
+        "array": "cpp"
+    },
+    "cSpell.words": [
+        "Alfils",
+        "Dabbabas",
+        "Ferzes",
+        "macropad",
+        "Wazir"
+    ],
+    "chat.tools.terminal.autoApprove": {
+        "/usr/bin/g++": true
+    }
+}
