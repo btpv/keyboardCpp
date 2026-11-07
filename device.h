@@ -28,6 +28,7 @@ public:
   device(uint16_t vendor_id, uint16_t product_id);
   ~device();
   bool open();
+  
   MessageType read(unsigned char buffer[MESSAGE_SIZE]);
   DeviceInfo getDeviceInfo() { return {vid, pid}; }
   bool write(MessageType type, const unsigned char data[MESSAGE_SIZE - 1]);
@@ -41,8 +42,8 @@ public:
 
 private:
   uint16_t vid;
-  uint16_t pid;
-  hid_device *hidDevice = nullptr;
+  uint16_t pid; 
+  hid_device *hidDevice = nullptr ;
   hid_device *getInterface();
   bool isWriteing = false;
 };

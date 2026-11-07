@@ -31,6 +31,10 @@ hid_device *device::getInterface() {
   return device;
 }
 bool device::open() {
+  if (hidDevice) {
+    hid_close(hidDevice);
+    hidDevice = nullptr;
+  }
   hidDevice = getInterface();
   if (!hidDevice) {
     std::cerr << "Failed to open device\n";
@@ -38,6 +42,8 @@ bool device::open() {
   }
   if (!write(MessageType::CM_OPEN)) {
     std::cerr << "Failed to send open command\n";
+    hid_close(hidDevice);
+    hidDevice = nullptr;
     return false;
   }
   return true;

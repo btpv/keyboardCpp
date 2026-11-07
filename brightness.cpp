@@ -8,7 +8,7 @@
 #include <poll.h>
 #include <string>
 #include <unistd.h>
-
+extern bool running;
 namespace {
 const std::filesystem::path backlightDirectory = "/sys/class/backlight";
 
@@ -68,7 +68,6 @@ void watchBrightness(std::function<void(int)> callback) {
 
   char buffer[32];
 
-  // Initial read to establish the notification baseline
   read(fd, buffer, sizeof(buffer));
 
   int lastBrightness = readBrightness();
@@ -78,7 +77,7 @@ void watchBrightness(std::function<void(int)> callback) {
 
   pollfd pfd{.fd = fd, .events = POLLPRI | POLLERR};
 
-  while (true) {
+  while (running) {
     int result = poll(&pfd, 1, -1);
 
     if (result < 0) {
