@@ -9,6 +9,9 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/keyboardCppDebug",
+      "args": [
+        "${workspaceFolder}/config.json"
+      ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],

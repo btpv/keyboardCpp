@@ -13,22 +13,9 @@
 #define KEYBOARD_COLOR "\033[93m"
 #define MACROPAD_COLOR "\033[91m"
 
-struct LogDevice {
-  uint16_t vendor_id;
-  uint16_t product_id;
-  const char *color;
-};
-const LogDevice logDevices[] = {
-    {0x32AC, 0x0012, KEYBOARD_COLOR}, // Keyboard
-    {0x32AC, 0x0013, MACROPAD_COLOR}, // Macropad
-};
 inline const char *getDeviceColor(uint16_t vendor_id, uint16_t product_id) {
-  for (const LogDevice &device : logDevices) {
-    if (device.vendor_id == vendor_id && device.product_id == product_id) {
-      return device.color;
-    }
-  }
-  return RESET_COLOR; // Default color if not found
+  const char *colors[] = {"\033[91m","\033[93m", "\033[95m", "\033[96m", "\033[92m", "\033[94m"};
+  return colors[(vendor_id + product_id) % (sizeof(colors) / sizeof(colors[0]))];
 }
 inline std::string getTime() {
   std::time_t now = std::time(nullptr);

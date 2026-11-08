@@ -34,9 +34,9 @@
                 "-O3",
                 "-DNDEBUG",
                 "-march=native",
-                "-flto",
                 "${workspaceFolder}/*.cpp",
                 "-lhidapi-hidraw",
+                "-flto=auto",
                 "-o",
                 "${workspaceFolder}/keyboardCppRelease"
             ],
